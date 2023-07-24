@@ -1,17 +1,17 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using burguerAPI.Domain.Entities;
-using burguerAPI.Application.Interfaces;
-using burguerAPI.Infrastructure.Context;
+using deliveryAPI.Domain.Entities;
+using deliveryAPI.Application.Interfaces;
+using deliveryAPI.Infrastructure.Context;
 
-namespace burguerAPI.Infrastructure.Repositories
+namespace deliveryAPI.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly BurguerDbContext _dbContext;
+        private readonly DeliveryDbContext _dbContext;
 
-        public UserRepository(BurguerDbContext dbContext)
+        public UserRepository(DeliveryDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using burguerAPI.Domain.Entities;
+using deliveryAPI.Domain.Entities;
 
-namespace burguerAPI.Application.Interfaces
+namespace deliveryAPI.Application.Interfaces
 {
     public interface IUserRepository
     {

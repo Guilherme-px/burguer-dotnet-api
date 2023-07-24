@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace burguerAPI.Infrastructure.Migrations
+namespace deliveryAPI.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

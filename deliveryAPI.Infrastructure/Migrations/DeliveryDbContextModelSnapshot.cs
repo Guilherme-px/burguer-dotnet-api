@@ -2,27 +2,24 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using burguerAPI.Infrastructure.Context;
+using deliveryAPI.Infrastructure.Context;
 
 #nullable disable
 
-namespace burguerAPI.Infrastructure.Migrations
+namespace deliveryAPI.Infrastructure.Migrations
 {
-    [DbContext(typeof(BurguerDbContext))]
-    [Migration("20230724210720_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(DeliveryDbContext))]
+    partial class DeliveryDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("burguerAPI.Domain.Entities.User", b =>
+            modelBuilder.Entity("deliveryAPI.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
