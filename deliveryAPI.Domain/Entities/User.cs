@@ -1,6 +1,6 @@
 using System;
 
-namespace burguerAPI.Domain.Entities;
+namespace deliveryAPI.Domain.Entities;
 
 public class User
 {

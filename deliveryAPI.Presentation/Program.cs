@@ -4,16 +4,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using burguerAPI.Application.Interfaces;
-using burguerAPI.Application.Services;
-using burguerAPI.Infrastructure.Context;
-using burguerAPI.Infrastructure.Repositories;
+using deliveryAPI.Application.Interfaces;
+using deliveryAPI.Application.Services;
+using deliveryAPI.Infrastructure.Context;
+using deliveryAPI.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddDbContext<BurguerDbContext>(options =>
+builder.Services.AddDbContext<DeliveryDbContext>(options =>
 {
     var configuration = builder.Configuration;
     var connectionString = configuration.GetConnectionString("DefaultConnection");

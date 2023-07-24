@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using burguerAPI.Application.Interfaces;
-using burguerAPI.Domain.Entities;
+using deliveryAPI.Application.Interfaces;
+using deliveryAPI.Domain.Entities;
 
-namespace burguerAPI.Application.Services
+namespace deliveryAPI.Application.Services
 {
     public class UserService : IUserService
     {
