@@ -1,0 +1,27 @@
+# Arquivos do Visual Studio
+!.gitignore
+!.editorconfig
+
+# Arquivos de solução do Visual Studio
+*.sln
+
+# Projetos do Visual Studio
+**/*.csproj
+**/*.csproj.user
+
+# Pasta bin e obj de cada projeto
+**/bin/
+**/obj/
+
+# Arquivos NuGet Packages
+*.nupkg
+**/nuget.config
+
+# Arquivos de log
+*.logs
+
+# Arquivos de configuração sensíveis
+appsettings.json
+
+# Exceto arquivos e pastas especificamente permitidos:
+!appsettings.example.json
