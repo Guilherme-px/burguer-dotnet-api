@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using deliveryAPI.Application.Interfaces;
-using deliveryAPI.Domain.Entities;
+using deliveryAPI.Application.Interfaces.Users;
+using deliveryAPI.Domain.Entities.Users;
 
-namespace deliveryAPI.Presentation.Controllers
+namespace deliveryAPI.Presentation.Controllers.Users
 {
     [ApiController]
     [Route("api/users")]

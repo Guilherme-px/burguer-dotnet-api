@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using deliveryAPI.Domain.Entities;
+using deliveryAPI.Domain.Entities.Users;
 
-namespace deliveryAPI.Application.Interfaces;
+namespace deliveryAPI.Application.Interfaces.Users;
 
 public interface IUserService
 {

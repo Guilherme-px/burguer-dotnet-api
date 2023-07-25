@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using deliveryAPI.Infrastructure.Context;
 
@@ -10,9 +11,11 @@ using deliveryAPI.Infrastructure.Context;
 namespace deliveryAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(DeliveryDbContext))]
-    partial class DeliveryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230725013752_updateUserData")]
+    partial class updateUserData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
