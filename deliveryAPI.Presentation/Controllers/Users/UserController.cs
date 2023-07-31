@@ -29,5 +29,17 @@ namespace deliveryAPI.Presentation.Controllers.Users
             var users = await _userService.GetAllUsersAsync();
             return Ok(users);
         }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserById(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
     }
 }

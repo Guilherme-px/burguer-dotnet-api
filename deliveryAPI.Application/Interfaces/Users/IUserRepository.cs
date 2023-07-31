@@ -10,4 +10,5 @@ public interface IUserRepository
     Task<User> AddAsync(User user);
     Task<User> GetUserByEmailAsync(string email);
     Task<List<User>> GetAllUsersAsync();
+    Task<User> GetUserByIdAsync(Guid userId);
 }

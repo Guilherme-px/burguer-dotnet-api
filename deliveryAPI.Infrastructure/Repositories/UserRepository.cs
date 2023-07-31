@@ -33,5 +33,10 @@ namespace deliveryAPI.Infrastructure.Repositories
         {
             return await _dbContext.Users.ToListAsync();
         }
+
+        public async Task<User> GetUserByIdAsync(Guid userId)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        }
     }
 }

@@ -9,4 +9,5 @@ public interface IUserService
 {
     Task<User> CreateUserAsync(User user);
     Task<List<User>> GetAllUsersAsync();
+    Task<User> GetUserByIdAsync(Guid userId);
 }
