@@ -11,4 +11,5 @@ public interface IUserService
     Task<IEnumerable<User>> GetAllUsersAsync();
     Task<User> GetUserByIdAsync(Guid userId);
     Task<User> UpdateUserAsync(Guid userId, User user);
+    Task DeleteUserAsync(Guid userId);
 }

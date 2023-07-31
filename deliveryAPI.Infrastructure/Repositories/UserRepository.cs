@@ -60,5 +60,15 @@ namespace deliveryAPI.Infrastructure.Repositories
 
             return existingUser;
         }
+
+        public async Task DeleteUserAsync(Guid userId)
+        {
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (existingUser != null)
+            {
+                _dbContext.Users.Remove(existingUser);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
     }
 }

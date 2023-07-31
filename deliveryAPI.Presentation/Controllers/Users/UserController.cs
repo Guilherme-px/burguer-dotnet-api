@@ -53,5 +53,18 @@ namespace deliveryAPI.Presentation.Controllers.Users
 
             return Ok(updatedUser);
         }
+
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> DeleteUser(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await _userService.DeleteUserAsync(userId);
+            return NoContent();
+        }
     }
 }

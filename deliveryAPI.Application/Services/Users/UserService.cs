@@ -54,4 +54,9 @@ public class UserService : IUserService
 
         return await _userRepository.UpdateUserAsync(userId, existingUser);
     }
+
+    public async Task DeleteUserAsync(Guid userId)
+    {
+        await _userRepository.DeleteUserAsync(userId);
+    }
 }
