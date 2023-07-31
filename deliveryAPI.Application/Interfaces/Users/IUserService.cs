@@ -8,6 +8,7 @@ namespace deliveryAPI.Application.Interfaces.Users;
 public interface IUserService
 {
     Task<User> CreateUserAsync(User user);
-    Task<List<User>> GetAllUsersAsync();
+    Task<IEnumerable<User>> GetAllUsersAsync();
     Task<User> GetUserByIdAsync(Guid userId);
+    Task<User> UpdateUserAsync(Guid userId, User user);
 }

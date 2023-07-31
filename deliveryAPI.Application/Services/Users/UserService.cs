@@ -25,7 +25,7 @@ public class UserService : IUserService
         return await _userRepository.AddAsync(user);
     }
 
-    public async Task<List<User>> GetAllUsersAsync()
+    public async Task<IEnumerable<User>> GetAllUsersAsync()
     {
         return await _userRepository.GetAllUsersAsync();
     }
@@ -33,5 +33,25 @@ public class UserService : IUserService
     public async Task<User> GetUserByIdAsync(Guid userId)
     {
         return await _userRepository.GetUserByIdAsync(userId);
+    }
+
+    public async Task<User> UpdateUserAsync(Guid userId, User user)
+    {
+        var existingUser = await _userRepository.GetUserByIdAsync(userId);
+        if (existingUser == null)
+        {
+            return null;
+        }
+
+        existingUser.Name = user.Name;
+        existingUser.Email = user.Email;
+        existingUser.Password = user.Password;
+        existingUser.CEP = user.CEP;
+        existingUser.Street = user.Street;
+        existingUser.StreetNumber = user.StreetNumber;
+        existingUser.Neighborhood = user.Neighborhood;
+        existingUser.UpdatedAt = DateTime.UtcNow;
+
+        return await _userRepository.UpdateUserAsync(userId, existingUser);
     }
 }

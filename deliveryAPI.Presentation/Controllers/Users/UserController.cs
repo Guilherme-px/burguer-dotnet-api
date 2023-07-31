@@ -41,5 +41,17 @@ namespace deliveryAPI.Presentation.Controllers.Users
 
             return Ok(user);
         }
+
+        [HttpPut("{userId}")]
+        public async Task<IActionResult> UpdateUser(Guid userId, User user)
+        {
+            var updatedUser = await _userService.UpdateUserAsync(userId, user);
+            if (updatedUser == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedUser);
+        }
     }
 }

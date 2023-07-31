@@ -29,7 +29,7 @@ namespace deliveryAPI.Infrastructure.Repositories
             return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<List<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _dbContext.Users.ToListAsync();
         }
@@ -37,6 +37,28 @@ namespace deliveryAPI.Infrastructure.Repositories
         public async Task<User> GetUserByIdAsync(Guid userId)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
+        public async Task<User> UpdateUserAsync(Guid userId, User user)
+        {
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (existingUser == null)
+            {
+                return null;
+            }
+
+            existingUser.Name = user.Name;
+            existingUser.Email = user.Email;
+            existingUser.Password = user.Password;
+            existingUser.CEP = user.CEP;
+            existingUser.Street = user.Street;
+            existingUser.StreetNumber = user.StreetNumber;
+            existingUser.Neighborhood = user.Neighborhood;
+            existingUser.UpdatedAt = DateTime.UtcNow;
+
+            await _dbContext.SaveChangesAsync();
+
+            return existingUser;
         }
     }
 }
