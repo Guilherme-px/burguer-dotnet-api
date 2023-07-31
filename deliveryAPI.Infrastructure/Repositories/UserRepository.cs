@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using deliveryAPI.Domain.Entities.Users;
 using deliveryAPI.Application.Interfaces.Users;
@@ -25,8 +26,12 @@ namespace deliveryAPI.Infrastructure.Repositories
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
-            return user != null ? user : throw new Exception("Usuário não encontrado.");
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _dbContext.Users.ToListAsync();
         }
     }
 }

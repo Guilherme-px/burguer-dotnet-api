@@ -22,5 +22,12 @@ namespace deliveryAPI.Presentation.Controllers.Users
             var createdUser = await _userService.CreateUserAsync(user);
             return Ok(createdUser);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
     }
 }

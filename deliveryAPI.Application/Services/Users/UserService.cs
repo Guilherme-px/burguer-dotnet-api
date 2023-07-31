@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using deliveryAPI.Application.Interfaces.Users;
 using deliveryAPI.Domain.Entities.Users;
 
@@ -22,5 +23,10 @@ public class UserService : IUserService
         }
 
         return await _userRepository.AddAsync(user);
+    }
+
+    public async Task<List<User>> GetAllUsersAsync()
+    {
+        return await _userRepository.GetAllUsersAsync();
     }
 }
