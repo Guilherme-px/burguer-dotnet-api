@@ -58,6 +58,7 @@ public class UserService : IUserService
         existingUser.Street = user.Street;
         existingUser.StreetNumber = user.StreetNumber;
         existingUser.Neighborhood = user.Neighborhood;
+        existingUser.IsAdmin = user.IsAdmin;
         existingUser.UpdatedAt = DateTime.UtcNow;
 
         if (!string.IsNullOrWhiteSpace(user.Password))
