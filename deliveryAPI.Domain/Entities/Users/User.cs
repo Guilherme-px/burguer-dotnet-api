@@ -21,19 +21,24 @@ public class User
     [Required]
     [StringLength(100)]
     [DataType(DataType.Password)]
+    [Column(TypeName = "VARCHAR")]
     public string Password { get; set; } = null!;
 
+    [Required]
     [StringLength(10)]
     public string CEP { get; set; } = null!;
 
+    [Required]
     [StringLength(100)]
     public string Street { get; set; } = null!;
 
-    [StringLength(10)]
-    public string StreetNumber { get; set; } = null!;
+    [Required]
+    public int StreetNumber { get; set; }
 
+    [Required]
     [StringLength(100)]
     public string Neighborhood { get; set; } = null!;
+
     public bool IsAdmin { get; set; }
 
     [DataType(DataType.DateTime)]

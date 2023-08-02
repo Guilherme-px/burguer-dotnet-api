@@ -14,13 +14,21 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<User> CreateUserAsync(User user)
+    public async Task<User> CreateUserAsync(User user, string confirmPassword)
     {
         var existingUser = await _userRepository.GetUserByEmailAsync(user.Email);
         if (existingUser != null)
         {
             throw new Exception("Já existe um usuário com o mesmo e-mail.");
         }
+
+        if (user.Password != confirmPassword)
+        {
+            throw new Exception("A senha e a confirmação de senha não correspondem.");
+        }
+
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+        user.Password = hashedPassword;
 
         return await _userRepository.AddAsync(user);
     }
@@ -50,8 +58,12 @@ public class UserService : IUserService
         existingUser.Street = user.Street;
         existingUser.StreetNumber = user.StreetNumber;
         existingUser.Neighborhood = user.Neighborhood;
-        existingUser.IsAdmin = user.IsAdmin;
         existingUser.UpdatedAt = DateTime.UtcNow;
+
+        if (!string.IsNullOrWhiteSpace(user.Password))
+        {
+            existingUser.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+        }
 
         return await _userRepository.UpdateUserAsync(userId, existingUser);
     }

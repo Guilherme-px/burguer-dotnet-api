@@ -17,10 +17,17 @@ namespace deliveryAPI.Presentation.Controllers.Users
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(User user)
+        public async Task<IActionResult> CreateUser(User user, string confirmPassword)
         {
-            var createdUser = await _userService.CreateUserAsync(user);
-            return Ok(createdUser);
+            try
+            {
+                var createdUser = await _userService.CreateUserAsync(user, confirmPassword);
+                return Ok(createdUser);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
