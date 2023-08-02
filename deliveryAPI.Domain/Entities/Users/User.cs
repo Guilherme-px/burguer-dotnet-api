@@ -34,6 +34,7 @@ public class User
 
     [StringLength(100)]
     public string Neighborhood { get; set; } = null!;
+    public bool IsAdmin { get; set; }
 
     [DataType(DataType.DateTime)]
     public DateTime CreatedAt { get; set; }

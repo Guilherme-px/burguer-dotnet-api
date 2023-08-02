@@ -54,6 +54,7 @@ namespace deliveryAPI.Infrastructure.Repositories
             existingUser.Street = user.Street;
             existingUser.StreetNumber = user.StreetNumber;
             existingUser.Neighborhood = user.Neighborhood;
+            existingUser.IsAdmin = user.IsAdmin;
             existingUser.UpdatedAt = DateTime.UtcNow;
 
             await _dbContext.SaveChangesAsync();

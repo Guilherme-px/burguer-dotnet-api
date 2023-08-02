@@ -50,6 +50,7 @@ public class UserService : IUserService
         existingUser.Street = user.Street;
         existingUser.StreetNumber = user.StreetNumber;
         existingUser.Neighborhood = user.Neighborhood;
+        existingUser.IsAdmin = user.IsAdmin;
         existingUser.UpdatedAt = DateTime.UtcNow;
 
         return await _userRepository.UpdateUserAsync(userId, existingUser);
