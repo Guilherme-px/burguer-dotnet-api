@@ -8,10 +8,14 @@ using deliveryAPI.Application.Interfaces.Users;
 using deliveryAPI.Application.Services.Users;
 using deliveryAPI.Infrastructure.Context;
 using deliveryAPI.Infrastructure.Repositories;
+using deliveryAPI.Domain.Entities.Users;
+using deliveryAPI.Domain.Validators.Users;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation();
 builder.Services.AddDbContext<DeliveryDbContext>(options =>
 {
     var configuration = builder.Configuration;
@@ -20,6 +24,7 @@ builder.Services.AddDbContext<DeliveryDbContext>(options =>
 });
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IValidator<User>, UserValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

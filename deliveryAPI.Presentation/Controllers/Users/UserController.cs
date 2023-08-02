@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using deliveryAPI.Application.Interfaces.Users;
 using deliveryAPI.Domain.Entities.Users;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace deliveryAPI.Presentation.Controllers.Users
 {
@@ -24,9 +26,10 @@ namespace deliveryAPI.Presentation.Controllers.Users
                 var createdUser = await _userService.CreateUserAsync(user, confirmPassword);
                 return Ok(createdUser);
             }
-            catch (Exception ex)
+            catch (FluentValidation.ValidationException ex)
             {
-                return BadRequest(ex.Message);
+                var errorMessages = ex.Errors.Select(error => error.ErrorMessage);
+                return BadRequest(new { Errors = errorMessages });
             }
         }
 
